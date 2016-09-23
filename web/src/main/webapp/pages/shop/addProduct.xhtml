@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+	<h:form id="form">
+		<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+
+		<h3>Dodaj nowy produkt</h3>
+		<h:panelGrid columns="1" cellpaddomg="5">
+			<h:outputLabel for="name" value="Nazwa produktu:"/>
+			<p:inputText id="name" value="#{productBackingBean.product.name}" disabled="#{productBackingBean.ifSubmit()}"  styleClass="field"/>
+
+			<h:outputLabel for="weight" value="Waga:"/>
+			<p:inputText id="weight" value="#{productBackingBean.product.weight}" disabled="#{productBackingBean.ifSubmit()}" styleClass="field"/>
+
+			<h:outputLabel for="price" value="Cena:"/>
+			<p:inputText id="price" value="#{productBackingBean.product.price}" disabled="#{productBackingBean.ifSubmit()}" styleClass="field"/>
+
+			<h:outputLabel for="quantity" value="Liczba w magazynie:"/>
+			<p:inputText id="quantity" value="#{productBackingBean.product.quantity}" disabled="#{productBackingBean.ifSubmit()}" styleClass="field"/>
+
+			<h:outputLabel for="rating" value="Ocena produktu:"/>
+			<p:inputText id="rating" value="#{productBackingBean.product.rating}" disabled="#{productBackingBean.ifSubmit()}" styleClass="field"/>
+
+			<h:outputLabel for="description" value="Opis:"/>
+			<p:inputTextarea id="description" rows="10" cols="30" value="#{productBackingBean.product.description}" disabled="#{productBackingBean.ifSubmit()}" styleClass="field"/>
+
+
+			<p:commandButton id="addProductBtn" value="Dodaj produkt" actionListener="#{productBackingBean.addProduct}" disabled="#{productBackingBean.ifSubmit()}" styleClass="field"/>
+
+			<p:remoteCommand name="updateAddProductForm" update="@(.field)"/>
+
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>
